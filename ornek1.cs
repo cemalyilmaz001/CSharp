@@ -5,7 +5,12 @@ class Program
     static void Main()
     {
         //Ornek1();
-        Ornek2();
+        //Ornek2();
+        //Ornek3();
+        Ornek4();
+        //Ornek25();
+        //Ornek26();
+        //Ornek27();
     }
 
     static void Ornek1() {
@@ -92,6 +97,29 @@ class Program
         geçenlerin ve kalanların sayısını buldurarak
         ekrana yazdıran programın akış diyagramını yapınız*/
         
+        int d = 1;
+        int geçenler = 0;
+        int kalanlar = 0;
+        do {
+            Console.WriteLine("Matematik Notlarını Giriniz: ");
+            int not = Convert.ToInt32(Console.ReadLine());
+            
+            if (not <= 50) {
+                kalanlar += 1;
+            }else {
+                geçenler += 1;
+            }
+            
+
+            if (d == 6) {
+                break;
+            }
+
+            d += 1;
+        }while(true);
+
+        Console.WriteLine("Geçen Öğrencilerin Sayısı: " + geçenler);
+        Console.WriteLine("Kalan Öğrencilerin Sayısı: " + kalanlar);
     }
 
     static void Ornek4(){
@@ -100,7 +128,31 @@ class Program
         için “A” çevre için “Ç” seçilebilecek). Kullanıcının seçimine göre
          Alan yada Çevreyi bulup yazdıran bir programı
         switch /case ie yazınız. ( Çevre:2*Pi*r Alan:Pi*r*r */
+        double Pi = 3.14;
+        double alan,cevre;
+        Console.WriteLine("Yarıçap Bilgisi Giriniz: ");
+        int yaricap = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Dairenin ALanı İçin(A) Çevresi İçin(Ç) Giriniz: ");
+        string cevap = Console.ReadLine();
         
+        switch(cevap) 
+        {
+        case "A":
+            // Alan Bulunacak
+            alan = Pi*yaricap*yaricap;
+            Console.WriteLine("Dairenin Alanı: " + alan);
+            break;
+        case "Ç":
+            // Yarıcap Bulunacak
+            cevre = 2*Pi*yaricap;
+            Console.WriteLine("Dairenin Çevresi: " + cevre);
+            break;
+        default:
+            Console.WriteLine("Yanlış Değer");
+            break;
+        }
+
     }
 
     static void Ornek5(){
@@ -229,5 +281,44 @@ class Program
         matrisi ekrana yazdıran programı yazını*/
         
     }
+
+    static void Ornek25(){
+        /* Klavyeden 0 girilinceye kadar girilen sayıların toplamını bulan program */
+        int toplam = 0;
+        while(true) {
+            Console.WriteLine("Sayı Gir: ");
+            int sayi = Convert.ToInt32(Console.ReadLine());
+
+            if (sayi == 0) {
+                break;
+            }else {
+                toplam += sayi;
+            }
+        }
+        Console.WriteLine("Toplam Değer: " + toplam);
+    }
+
+    static void Ornek26(){
+        /* Klavyeden negatif bir sayı girilinceye kadar girilen sayılardan tek sayılarını bulan program */
+        int teksayilar = 0;
+        while(true) {
+            Console.WriteLine("Sayı Gir: ");
+            int sayi = Convert.ToInt32(Console.ReadLine());
+
+            if (sayi <= 0) {
+                break;
+            }else if (sayi % 2 == 1){
+                teksayilar += 1;
+            }
+        }
+        Console.WriteLine("Tek Sayılar: " + teksayilar);
+    }
+
+
+    static void Ornek27(){
+        /*  */
+       
+    }
+
 
 }
