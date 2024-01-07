@@ -7,10 +7,16 @@ class Program
         //Ornek1();
         //Ornek2();
         //Ornek3();
-        Ornek4();
+        //Ornek4();
         //Ornek25();
         //Ornek26();
         //Ornek27();
+        //Ornek7();
+        //Ornek8();
+        //Ornek9();
+        //Ornek10();
+        Ornek20();
+
     }
 
     static void Ornek1() {
@@ -172,27 +178,113 @@ class Program
         
     }
 
-    static void Ornek7(){
+    static void Ornek7()
+    {
         /* Klavyeden “0” sıfır girilinceye kadar girilen sayılardan en küçüğünü bulan programın akış diyagramını yapınız */
+        int enkucuksayi = 0;
+
+        Console.WriteLine("Sayı giriniz: ");
+        int sayiilk = Convert.ToInt32(Console.ReadLine());
+
+        while (sayiilk != 0)
+        {
+            Console.WriteLine("Sayı giriniz: ");
+            int sayi = Convert.ToInt32(Console.ReadLine());
+
+            if (sayi < enkucuksayi || enkucuksayi == 0)
+            {
+                enkucuksayi = sayi;
+            }
+
+            if (sayi == 0)
+            {
+                break;
+            }
+        }
+
+        Console.WriteLine("En küçük sayı: " + enkucuksayi);
+        Console.ReadKey();
     }
+
 
     static void Ornek8(){
         /* Negatif bir sayı girilene kadar, klavyeden girilen öğrenci notlarını alarak, bunların ortalamasını ekrana yazdıran
         programı gerçekleştiriniz.*/
-        
+        int ortalama = 0;
+        int adet = 0;
+        int sonuc = 0;
+        do {
+            Console.WriteLine("Not Giriniz: ");
+            int not = Convert.ToInt32(Console.ReadLine());
+            ortalama += not;
+            adet += 1;
+            if(not < 0) {
+                break;
+            } 
+        }while(true);
+        sonuc = ortalama / adet;
+        Console.WriteLine("Girilen Notların Ortalaması: " + sonuc);
     }
 
     static void Ornek9(){
         /* Klavyeden “0-SIFIR” değeri girilene kadar GİRİLEN sayılar içinde, ASAL olan sayıların TOPLAMINI bulan ve bu
-        toplamı ekrana yazdıran bir JAVA programı yazınız?*/
+        toplamı ekrana yazdıran bir Csharp programı yazınız?*/
+
+        int toplam = 0;
+        do {
+            Console.WriteLine("Sayı Giriniz: ");
+            int sayi = Convert.ToInt32(Console.ReadLine());
+            
+            if(sayi == 2){
+                if(sayi % 2 == 0){
+                    toplam += sayi;
+                }
+            }
+
+            if(sayi % 2 == 1) {
+                // Asal Sayi
+                toplam += sayi;
+            }
+
+            if(sayi == 0) {
+                break;
+            }
+        }while(true);
+        
+        Console.Write(toplam);
         
     }
 
     static void Ornek10(){
         /* “Devam etmek istiyor musunuz?” sorusuna “E” girildiği sürece klavyeden girilen sayılardan çift sayıları
         toplayan, tek sayıları çarpan ve sonuçları ekranda gösteren uygulamayı yazınız*/
+        int teksayilarin_toplamı  = 0;
+        int çiftsayilarin_toplamı = 0;
+        do {
+            Console.Write("Sayi Giriniz: ");
+            int sayi = Convert.ToInt32(Console.ReadLine());
 
+            if(sayi % 2 == 0) {
+                çiftsayilarin_toplamı += sayi;
+            }else {
+                teksayilarin_toplamı += sayi;
+            } 
 
+            Console.Write("Devam etmek istiyor musunuz? ('E','H'): ");
+            string devam = Console.ReadLine();
+            if(devam == "H"){
+                break;
+            }
+        }while(true);
+        
+        if (çiftsayilarin_toplamı != 0){
+            Console.WriteLine("Çift Sayıların Toplamı: " + çiftsayilarin_toplamı);
+        }
+
+        if (teksayilarin_toplamı != 0){
+            Console.WriteLine("Tek Sayıların Toplamı: " + teksayilarin_toplamı);
+        }
+    
     }
 
     static void Ornek11(){
@@ -255,6 +347,45 @@ class Program
 
     static void Ornek20(){
         /* Klavyeden girilen bir sayının asal olup olmadığını bulduran programı yazınız?*/
+        
+         Console.WriteLine("Bir sayı girin:");
+        string userInput = Console.ReadLine();
+
+        if (int.TryParse(userInput, out int number))
+        {
+            if (IsPrime(number))
+            {
+                Console.WriteLine($"{number} bir asal sayıdır.");
+            }
+            else
+            {
+                Console.WriteLine($"{number} bir asal sayı değildir.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Geçersiz bir sayı girişi yaptınız.");
+        }
+
+
+    }
+
+    static bool IsPrime(int num)
+    {
+        if (num <= 1)
+        {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.Sqrt(num); i++)
+        {
+            if (num % i == 0)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     static void Ornek21(){
@@ -271,7 +402,7 @@ class Program
     }
 
     static void Ornek23(){
-        /* lavyeden girilen satır ve sütun sayısına göre rastgele rakamlardan oluşan
+        /* klavyeden girilen satır ve sütun sayısına göre rastgele rakamlardan oluşan
         matrisi ekrana yazdıran programı yazınız*/
         
     }
@@ -316,8 +447,11 @@ class Program
 
 
     static void Ornek27(){
-        /*  */
+        /* random ile rasgele bir değer oluşturma ve 5 denemede bulma oyunu  */
        
+        
+
+
     }
 
 
