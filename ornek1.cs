@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
@@ -15,8 +16,17 @@ class Program
         //Ornek8();
         //Ornek9();
         //Ornek10();
-        Ornek20();
-
+        //Ornek20();
+        //NesneYönelimÖrnek1();
+        //NesneYönelimÖrnek2();
+        //NesneYönelimÖrnek3();
+        //NesneYönelimÖrnek4();
+        //NesneYönelimÖrnek5();
+        //NesneYönelimÖrnekArraylerÖrnekleri1();
+        //NesneYönelimÖrnekArraylerÖrnekleri2();
+        //NesneYönelimÖrnekArraylerÖrnekleri3();
+        //NesneYönelimÖrnekArraylerÖrnekleri4();
+        NesneYönelimÖrnekArraylerÖrnekleri5();
     }
 
     static void Ornek1() {
@@ -455,4 +465,232 @@ class Program
     }
 
 
+    static void NesneYönelimÖrnek1(){
+        //Klavyeden girilen bir metin içinde yine klavyeden girilen bir harfin sayısını ve konumlarını bulduran programı yazınız
+
+        Console.WriteLine("Bir metin giriniz:");
+        string metin = Console.ReadLine();
+
+        Console.WriteLine("Bir harf giriniz:");
+        Char karakter = Console.ReadKey().KeyChar;
+
+        List<int> konumlar = new List<int>();
+        int sayi = 0;
+
+        for (int i = 0; i < metin.Length; i++) {
+            if (metin[i] == karakter)
+            {
+                sayi++;
+                konumlar.Add(i);
+            }
+        }
+        Console.WriteLine("\n\nKarakter '{0}' metinde {1} kez bulundu.", karakter, sayi);
+        Console.WriteLine("Karakterin konumları: " + string.Join(", ", konumlar));
+    }
+
+
+
+    static void NesneYönelimÖrnek2() {
+        // 2)Klavyeden girilen bir metindeki harfleri ve harf indexsini alt alta listeleyiniz.
+        Console.WriteLine("Bir metin giriniz:");
+        string metin = Console.ReadLine();
+
+        for (int i = 0; i < metin.Length; i++) {
+            Console.WriteLine(i + ". Harf " + metin[i]);
+        }
+    }
+    
+    static void NesneYönelimÖrnek3(){
+        // 3) Klavyeden girilen bir metinin baş harflerini ekrana yazdırınız.
+        Console.WriteLine("Bir metin giriniz:");
+        string metin = Console.ReadLine();
+        char ilkHarf = metin[0];
+        Console.Write(ilkHarf);
+    }
+
+    static void NesneYönelimÖrnek4() {
+        // Klavyeden girilen bir metin içerisindeki bir ifadeyi (metin harf karakter vs.) yine klavyeden girilen bir ifade (metin harf 
+        // karakter vs.) ile değiştiren programı yazınız
+        
+        Console.Write("Lütfen bir metin giriniz: ");
+        string metin = Console.ReadLine();
+
+        Console.Write("Değiştirilecek ifadeyi giriniz: ");
+        string eskiIfade = Console.ReadLine();
+
+        Console.Write("Yeni ifadeyi giriniz: ");
+        string yeniIfade = Console.ReadLine();
+
+        string sonuc = metin.Replace(eskiIfade, yeniIfade);
+
+        Console.WriteLine("Sonuç: " + sonuc);
+    }
+
+    static void NesneYönelimÖrnek5() {
+        // Klavyeden girilen bir kelimeyi tersten yazan programı yazınız
+
+        Console.Write("Lütfen bir metin giriniz: ");
+        string metin = Console.ReadLine();
+
+        char[] charArray = metin.ToCharArray();
+        Array.Reverse(charArray);
+        string tersMetin = new string(charArray);
+
+        Console.WriteLine("Metnin ters çevrilmiş hali:");
+        Console.WriteLine(tersMetin);
+    }
+
+
+    static void NesneYönelimÖrnek6() {
+        // 6) Klavyeden girilen int türden bir sayının 
+        // basamak sayısını hesaplayan programı yazınız
+
+        Console.Write("Lütfen bir sayı giriniz: ");
+        int metin = Convert.ToInt32(Console.ReadLine();)
+
+        Console.Write("Basamak Sayısı: " + sayac);
+    }
+
+    static void NesneYönelimÖrnekArraylerÖrnekleri1() {
+        
+        // 10 elemanlı bir dizi içerisinde rasgele (1-100 aralığında)
+        // sayılar atılacak bu dizideki tek ve çift sayıların toplamını 
+        // bulan ve yazdıran programı yazınız
+
+        Random random = new Random();
+        int[] dizi = new int[10];
+        int tekToplam = 0, ciftToplam = 0;
+
+        for (int i = 0; i < dizi.Length; i++)
+        {
+            dizi[i] = random.Next(1, 101);
+            Console.WriteLine($"Dizinin {i+1}. elemani: {dizi[i]}");
+
+            if (dizi[i] % 2 == 0)
+            {
+                ciftToplam += dizi[i];
+            }
+            else
+            {
+                tekToplam += dizi[i];
+            }
+        }
+
+        Console.WriteLine($"Dizideki tek sayıların toplamı: {tekToplam}");
+        Console.WriteLine($"Dizideki çift sayıların toplamı: {ciftToplam}");
+
+    }
+
+
+    static void NesneYönelimÖrnekArraylerÖrnekleri2() {
+        
+        //  10 elemanlı bir dizi içerisinde klavyeden sayılar girilecektir bu dizideki pozitif sayıların toplamını bulan ve yazdıran cssharp kodu
+
+        int[] dizi = new int[10];
+        int toplam = 0;
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write("Sayı girin: ");
+            dizi[i] = Convert.ToInt32(Console.ReadLine());
+            if (dizi[i] > 0)
+            {
+                toplam += dizi[i];
+            }
+        }
+
+        Console.WriteLine("Pozitif sayıların toplamı: " + toplam);
+
+
+    }
+
+    static void NesneYönelimÖrnekArraylerÖrnekleri3() {
+        
+        // 10 elemanlı bir dizi içerine rasgele  (1-100) aralığında sayılar atılacaktır. bu dizideki sayılarda en büyüğü ve dizi indis numarasını bulup yazdıran cssharp kodu
+         Random rastgele = new Random();
+        int[] dizi = new int[10];
+        int enBuyuk = 0;
+        int enBuyukIndis = 0;
+
+        for (int i = 0; i < 10; i++)
+        {
+            dizi[i] = rastgele.Next(1, 101);
+            Console.WriteLine("Dizi[" + i + "]: " + dizi[i]);
+
+            if (dizi[i] > enBuyuk)
+            {
+                enBuyuk = dizi[i];
+                enBuyukIndis = i;
+            }
+        }
+
+        Console.WriteLine("En büyük sayı: " + enBuyuk + ", İndis numarası: " + enBuyukIndis);
+
+    }
+
+    static void NesneYönelimÖrnekArraylerÖrnekleri4() {
+        
+        // 10 elemanlı bir dizi içerisinde rasgele (1-100 aralığında) sayılar atılacaktır. bu dizinin ortalamasının en büyük ve en küçük elemanını bulan ve yazdıran csharp kodu
+        Random rastgele = new Random();
+        int[] dizi = new int[10];
+        double toplam = 0;
+        int enBuyuk = 0;
+        int enKucuk = 101;
+
+        for (int i = 0; i < 10; i++)
+        {
+            dizi[i] = rastgele.Next(1, 101);
+            Console.WriteLine("Dizi[" + i + "]: " + dizi[i]);
+            toplam += dizi[i];
+
+            if (dizi[i] > enBuyuk)
+            {
+                enBuyuk = dizi[i];
+            }
+
+            if (dizi[i] < enKucuk)
+            {
+                enKucuk = dizi[i];
+            }
+        }
+
+        double ortalama = toplam / 10;
+
+        Console.WriteLine("Ortalama: " + ortalama);
+        Console.WriteLine("En büyük sayı: " + enBuyuk);
+        Console.WriteLine("En küçük sayı: " + enKucuk);
+
+    }
+
+    static void NesneYönelimÖrnekArraylerÖrnekleri5() {
+        
+        // 10 elemanlı bir dizi içerine klavyeden sayılar girilecektir bu dizideki çift numaraları kutucuklardaki (indis numarasını çift sayı olan) sayıların toplamını bulan ve yazdıran csharp kodu
+
+        int[] dizi = new int[10];
+        int toplam = 0;
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write("Sayı girin: ");
+            dizi[i] = Convert.ToInt32(Console.ReadLine());
+
+            if (i % 2 == 0) // İndis numarası çift ise
+            {
+                toplam += dizi[i];
+            }
+        }
+
+        Console.WriteLine("Çift indisli elemanların toplamı: " + toplam);
+    }
+
+
+
+
 }
+
+
+
+
+
+
+
