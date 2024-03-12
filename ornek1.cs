@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 class Program
 {
@@ -22,11 +23,130 @@ class Program
         //NesneYönelimÖrnek3();
         //NesneYönelimÖrnek4();
         //NesneYönelimÖrnek5();
-        //NesneYönelimÖrnekArraylerÖrnekleri1();
-        //NesneYönelimÖrnekArraylerÖrnekleri2();
-        //NesneYönelimÖrnekArraylerÖrnekleri3();
-        //NesneYönelimÖrnekArraylerÖrnekleri4();
-        NesneYönelimÖrnekArraylerÖrnekleri5();
+
+        while(true) {
+
+            Console.Write(
+@"=============================
+Nesne Tab Prog Lab Çal Soru_2
+=============================
+1) Dizilerdeki Tek ve Çift Sayıları Bulan
+2) Dizilerdeki Pozitif Sayıları Bulan
+3) Dizilerdeki En Büyük Değeri Bulan
+4) Dizi Ortalamasının En Büyük ve En Küçük Değeri
+5) İndis Numarası Çift Olan Değerler
+=============================
+Nesne Tab Prog Lab Çal Soru_3
+=============================
+6) Decimal den Binray ye çevirme 
+7) Çalışma Sorusu 2
+8) Kura İşlemi
+9) Sayısal Loto
+10)Adisyon Programı 
+=============================
+99)Exit
+
+Hangi Numarayı çalıştırmak istersin: ");
+
+            try { 
+                int kontrol = Convert.ToInt32(Console.ReadLine());
+                switch(kontrol)
+                {
+                case 1:
+                    NesneYönelimÖrnekArraylerÖrnekleri1();
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 2:
+                    NesneYönelimÖrnekArraylerÖrnekleri2();
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 3:
+                    NesneYönelimÖrnekArraylerÖrnekleri3();
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 4:
+                    NesneYönelimÖrnekArraylerÖrnekleri4();
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 5:
+                    NesneYönelimÖrnekArraylerÖrnekleri5();
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 6:
+                    DecimalBinaryTranslate();
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 7:
+                    NesneYönelimÖrnekArraylerÖrnekleri6();
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 8:
+                    KuraSayacV1();
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 9:
+                    SayisalLoto();
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 10:
+                    NesneYönelimÖrnekArraylerÖrnekleri7();
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 99:
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Yanlış Değer");
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                }
+            }
+            catch (FormatException)
+            {
+                // Format hatası olduğunda çalışacak kodlar catch bloğuna yazılır
+                Console.WriteLine("Hatalı format! Lütfen sayı giriniz.");
+            }
+            catch (OverflowException)
+            {
+                // Taşma hatası olduğunda çalışacak kodlar catch bloğuna yazılır
+                Console.WriteLine("Çok büyük bir sayı girdiniz.");
+            }
+            finally
+            {
+                // Her durumda çalışacak kodlar finally bloğuna yazılır
+                Console.WriteLine("Program sonlandırıldı.");
+            }
+
+        }
+        
+
+    }
+
+    static void clear() {
+        // Linux'ta "clear" komutunu çalıştır
+        Process process = new Process();
+        process.StartInfo.FileName = "/bin/bash";
+        process.StartInfo.Arguments = "-c \"clear\"";
+        process.StartInfo.UseShellExecute = false;
+        process.StartInfo.RedirectStandardOutput = true;
+        process.Start();
+
+        // Çıktıyı oku ve ekrana yazdır
+        string output = process.StandardOutput.ReadToEnd();
+        Console.WriteLine(output);
+
+        process.WaitForExit();
     }
 
     static void Ornek1() {
@@ -541,16 +661,6 @@ class Program
     }
 
 
-    static void NesneYönelimÖrnek6() {
-        // 6) Klavyeden girilen int türden bir sayının 
-        // basamak sayısını hesaplayan programı yazınız
-
-        Console.Write("Lütfen bir sayı giriniz: ");
-        int metin = Convert.ToInt32(Console.ReadLine();)
-
-        Console.Write("Basamak Sayısı: " + sayac);
-    }
-
     static void NesneYönelimÖrnekArraylerÖrnekleri1() {
         
         // 10 elemanlı bir dizi içerisinde rasgele (1-100 aralığında)
@@ -583,8 +693,8 @@ class Program
 
 
     static void NesneYönelimÖrnekArraylerÖrnekleri2() {
-        
-        //  10 elemanlı bir dizi içerisinde klavyeden sayılar girilecektir bu dizideki pozitif sayıların toplamını bulan ve yazdıran cssharp kodu
+        // 10 elemanlı bir dizi içerisinde klavyeden sayılar girilecektir 
+        // bu dizideki pozitif sayıların toplamını bulan ve yazdıran 
 
         int[] dizi = new int[10];
         int toplam = 0;
@@ -600,14 +710,13 @@ class Program
         }
 
         Console.WriteLine("Pozitif sayıların toplamı: " + toplam);
-
-
     }
 
     static void NesneYönelimÖrnekArraylerÖrnekleri3() {
-        
-        // 10 elemanlı bir dizi içerine rasgele  (1-100) aralığında sayılar atılacaktır. bu dizideki sayılarda en büyüğü ve dizi indis numarasını bulup yazdıran cssharp kodu
-         Random rastgele = new Random();
+        // 10 elemanlı bir dizi içerine rasgele  (1-100) aralığında sayılar atılacaktır.
+        // bu dizideki sayılarda en büyüğü ve dizi indis numarasını bulup yazdıran 
+
+        Random rastgele = new Random();
         int[] dizi = new int[10];
         int enBuyuk = 0;
         int enBuyukIndis = 0;
@@ -625,12 +734,12 @@ class Program
         }
 
         Console.WriteLine("En büyük sayı: " + enBuyuk + ", İndis numarası: " + enBuyukIndis);
-
     }
 
     static void NesneYönelimÖrnekArraylerÖrnekleri4() {
-        
-        // 10 elemanlı bir dizi içerisinde rasgele (1-100 aralığında) sayılar atılacaktır. bu dizinin ortalamasının en büyük ve en küçük elemanını bulan ve yazdıran csharp kodu
+        // 10 elemanlı bir dizi içerisinde rasgele (1-100 aralığında) sayılar atılacaktır. 
+        //bu dizinin ortalamasının en büyük ve en küçük elemanını bulan ve yazdıran 
+
         Random rastgele = new Random();
         int[] dizi = new int[10];
         double toplam = 0;
@@ -664,7 +773,9 @@ class Program
 
     static void NesneYönelimÖrnekArraylerÖrnekleri5() {
         
-        // 10 elemanlı bir dizi içerine klavyeden sayılar girilecektir bu dizideki çift numaraları kutucuklardaki (indis numarasını çift sayı olan) sayıların toplamını bulan ve yazdıran csharp kodu
+        // 10 elemanlı bir dizi içerine klavyeden sayılar girilecektir 
+        // bu dizideki çift numaraları kutucuklardaki (indis numarasını çift sayı olan) 
+        // sayıların toplamını bulan ve yazdıran 
 
         int[] dizi = new int[10];
         int toplam = 0;
@@ -684,13 +795,224 @@ class Program
     }
 
 
+    static void DecimalBinaryTranslate() {
+      
+        // Klavyeden girilen Decimal bir sayıyı Binary e çeviren bir programı dizi kullanarak gerçekleştiriniz.
 
+        Console.Write("Ondalık sayı girin: ");
+        decimal sayi = decimal.Parse(Console.ReadLine());
+
+        int tamKisim = (int)sayi;
+        decimal ondalikKisim = sayi - tamKisim;
+
+        string tamKisimBinary = DecimalToBinary(tamKisim);
+        string ondalikKisimBinary = DecimalPartToBinary(ondalikKisim);
+
+        Console.WriteLine($"Tam kısım (Binary): {tamKisimBinary}");
+        Console.WriteLine($"Ondalık kısım (Binary): {ondalikKisimBinary}");
+    }
+
+
+    static string DecimalToBinary(int sayi)
+    {
+        string binary = Convert.ToString(sayi, 2);
+        return binary;
+    }
+
+    static string DecimalPartToBinary(decimal sayi)
+    {
+        string binary = "";
+        int n = 8; // Ondalık kısım için 8 basamaklı olarak alınabilir, isteğe bağlı olarak değiştirilebilir
+
+        for (int i = 0; i < n; i++)
+        {
+            sayi *= 2;
+            binary += ((int)sayi).ToString();
+            if (sayi >= 1)
+                sayi -= 1;
+        }
+        return binary;
+    }
+
+
+    static void NesneYönelimÖrnekArraylerÖrnekleri6() {
+
+        // Satır ve Sütun sayısı klavyeden girilen 2 boyutlu bir dizi (matris) içerisine rastgele harfler
+        // atılacaktır. Klavyeden girilen bir kelimeyi bu matris içinde soldan-sağa ve yukarıdan aşağıya
+        // aratarak bulunduğu konumları yazdıran programı gerçekleştiriniz.
+
+        Console.Write("Satır Sayısı Giriniz: ");
+        int satir = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Sütun Sayısı Giriniz: ");
+        int sutun = Convert.ToInt32(Console.ReadLine());
+        
+        Random rastgele = new Random();
+        char[,] matris = new char[satir,sutun];
+
+        // Her bir elemanı rastgele harfle doldurun
+        for (int i = 0; i < satir; i++)
+        {
+            for (int a = 0; a < sutun; a++)
+            {
+                matris[i,a] = (char)('a' + rastgele.Next(0, 26)); // Rastgele küçük harf üret
+            }
+        }
+
+
+        for(int i = 0; i < satir; i++)
+        {
+            for(int a = 0; a < sutun; a++)
+            {
+                Console.Write(matris[i,a] + " ");
+            }
+            Console.WriteLine();
+        }
+
+
+        Console.Write("Harf Arama: ");
+        string harf = Console.ReadLine();
+        HarfBulucu(matris, satir,sutun,harf);
+
+    }
+
+    static void HarfBulucu(char[,] matris, int satir, int sutun, string harf) {
+
+        for(int i = 0; i<satir; i++){
+            for(int a = 0; a<sutun; a++){
+                
+                if (harf[0] == matris[i,a]) {
+                    Console.WriteLine("Harf Bulundu Konumu ["+ i + "," + a + "]");
+                }
+            }
+        }   
+
+    }
+
+    static void KuraSayacV1() {
+        string[] sehir;
+        string[] kisi;
+
+        Console.WriteLine("atama sayısı:");
+        int atama = Convert.ToInt32(Console.ReadLine());
+
+        sehir = new string[atama];
+        kisi = new string[atama];
+
+        Random random = new Random();
+
+        for (int i = 0; i < atama; i++)
+        {
+            Console.WriteLine("Şehir Giriniz:");
+            string şehir = Console.ReadLine(); // Değişken adını düzelt
+            sehir[i] = şehir;
+        }
+
+        for (int i = 0; i < atama; i++)
+        {
+            Console.WriteLine("Kişi Giriniz:");
+            string kisiler = Console.ReadLine(); // Değişken adını düzelt
+            kisi[i] = kisiler;
+        }
+
+        int n = kisi.Length;
+        while (n > 1)
+        {
+            n--;
+            int k = random.Next(n + 1);
+            string value = kisi[k];
+            kisi[k] = kisi[n];
+            kisi[n] = value;
+        }
+
+        for (int i = 0; i < atama; i++)
+        {
+            Console.WriteLine("Kişi " + kisi[i] + " Şehir " + sehir[i]);
+        }
+
+        Console.ReadKey();
+
+    }
+
+    static void SayisalLoto() {
+         Random random = new Random();
+        int[] sayilar = new int[6];
+
+        for (int i = 0; i < 6; i++)
+        {
+            int yeniSayi;
+            do
+            {
+                yeniSayi = random.Next(1, 50);
+            } while (Array.IndexOf(sayilar, yeniSayi) != -1);
+
+            sayilar[i] = yeniSayi;
+        }
+
+        Array.Sort(sayilar);
+
+        Console.WriteLine("Sayısal Loto 6/49 Sonuçları:");
+        foreach (int sayi in sayilar)
+        {
+            Console.Write(sayi + " ");
+        }
+    }
+
+
+    static void NesneYönelimÖrnekArraylerÖrnekleri7() {
+        Dictionary<string, int> ürünler = new Dictionary<string, int>();
+        ürünler["Döner"] = 0;       // Varsayılan olarak 0 adet
+        ürünler["Kumpir"] = 0;
+        ürünler["Pide"] = 0;
+        ürünler["Salata"] = 0;
+        ürünler["Meşrubat"] = 0;
+        while(true){
+            Console.Write(
+@"Ürün                Fiyat
+===========================
+1) Döner              20.0 TL
+2) Kumpir             40.0 TL
+3) Pide               55.0 TL
+4) Salata             30.0 TL       
+5) Meşrubat           15.0 TL
+
+Yeni Sipariş İçin (y) adisyon için (q): ");
+
+            string adisyon = Console.ReadLine();
+
+            if(adisyon[0] == 'y') {
+                Console.Write("Ürün Adı: ");
+                string ürünAdı = Console.ReadLine();
+
+                // Kullanıcıdan adet alın
+                Console.Write("Adet: ");
+                int adet = Convert.ToInt32(Console.ReadLine());
+
+                // Dictionary'de ilgili ürünün adetini güncelleyin
+                if (ürünler.ContainsKey(ürünAdı)){
+                    ürünler[ürünAdı] += adet;
+                    Console.WriteLine($"Yeni adet: {ürünler[ürünAdı]}");
+                    Console.Write("Siparişiniz Alınmıştır..");
+                }
+                else{
+                    Console.WriteLine("Ürün bulunamadı.");
+                }
+                Console.ReadKey();
+                continue;
+            }else if(adisyon[0] == 'q') {
+                Console.WriteLine("Adisyon Tamamlandı..");
+                foreach (var ürün in ürünler)
+                {
+                    Console.WriteLine($"{ürün.Key}: {ürün.Value} adet");
+                }
+                Console.ReadKey();
+                break;
+            }else {
+                clear();
+                continue;
+            }
+
+        }
+    }
 
 }
-
-
-
-
-
-
-
