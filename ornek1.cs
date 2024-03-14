@@ -44,6 +44,19 @@ Nesne Tab Prog Lab Çal Soru_3
 9) Sayısal Loto
 10)Adisyon Programı 
 =============================
+Object Oriented Programing
+=============================
+11) Örnek 1
+12) Faktoriyel Hesaplama
+13) Harf Bulma
+14) Kelime Bulma
+15)
+16)
+17)
+18)
+19)
+20)
+=============================
 99)Exit
 
 Hangi Numarayı çalıştırmak istersin: ");
@@ -99,6 +112,11 @@ Hangi Numarayı çalıştırmak istersin: ");
                     continue;
                 case 10:
                     NesneYönelimÖrnekArraylerÖrnekleri7();
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 11:
+                    NesneYönelimÖrnekleri();
                     Console.ReadKey();
                     clear();
                     continue;
@@ -870,24 +888,34 @@ Hangi Numarayı çalıştırmak istersin: ");
         }
 
 
-        Console.Write("Harf Arama: ");
-        string harf = Console.ReadLine();
-        HarfBulucu(matris, satir,sutun,harf);
+        Console.Write("Kelime Arama: ");
+        string kelime = Console.ReadLine();
+        HarfBulucu(matris, satir,sutun,kelime);
 
     }
 
-    static void HarfBulucu(char[,] matris, int satir, int sutun, string harf) {
-
-        for(int i = 0; i<satir; i++){
-            for(int a = 0; a<sutun; a++){
-                
-                if (harf[0] == matris[i,a]) {
-                    Console.WriteLine("Harf Bulundu Konumu ["+ i + "," + a + "]");
+    static void HarfBulucu(char[,] matris, int satir, int sutun, string kelime) {
+    int kelimeUzunlugu = kelime.Length;
+    for(int i = 0; i < satir; i++) {
+        for(int a = 0; a < sutun; a++) {
+            if(matris[i,a] == kelime[0]) {
+                int kelimeIndex = 1;
+                int satirIndex = i;
+                int sutunIndex = a + 1;
+                while(kelimeIndex < kelimeUzunlugu && sutunIndex < sutun && matris[satirIndex,sutunIndex] == kelime[kelimeIndex]) {
+                    kelimeIndex++;
+                    sutunIndex++;
+                }
+                if(kelimeIndex == kelimeUzunlugu) {
+                    Console.WriteLine("Kelime Bulundu");
+                    return;
                 }
             }
-        }   
-
+        }
     }
+    Console.WriteLine("Kelime Bulunamadı");
+}
+
 
     static void KuraSayacV1() {
         string[] sehir;
@@ -961,11 +989,12 @@ Hangi Numarayı çalıştırmak istersin: ");
 
     static void NesneYönelimÖrnekArraylerÖrnekleri7() {
         Dictionary<string, int> ürünler = new Dictionary<string, int>();
-        ürünler["Döner"] = 0;       // Varsayılan olarak 0 adet
-        ürünler["Kumpir"] = 0;
-        ürünler["Pide"] = 0;
-        ürünler["Salata"] = 0;
+        ürünler["Döner"]    = 0;       
+        ürünler["Kumpir"]   = 0;
+        ürünler["Pide"]     = 0;
+        ürünler["Salata"]   = 0;
         ürünler["Meşrubat"] = 0;
+
         while(true){
             Console.Write(
 @"Ürün                Fiyat
@@ -1000,11 +1029,39 @@ Yeni Sipariş İçin (y) adisyon için (q): ");
                 Console.ReadKey();
                 continue;
             }else if(adisyon[0] == 'q') {
+                int toplam = 0;
                 Console.WriteLine("Adisyon Tamamlandı..");
                 foreach (var ürün in ürünler)
                 {
-                    Console.WriteLine($"{ürün.Key}: {ürün.Value} adet");
+                    // varsayılan toplam fiyat
+                    int toplamFiyat = 0;
+
+                    if(ürün.Value != 0) {
+                        if(ürün.Key == "Döner") {
+                            int toplamDönerFiyat = (ürün.Value * 20);
+                            toplamFiyat += toplamDönerFiyat;
+                        }
+                        if(ürün.Key == "Kumpir") {
+                            int toplamKumpirFiyat = (ürün.Value * 40);
+                            toplamFiyat += toplamKumpirFiyat;
+                        }
+                        if(ürün.Key == "Pide") {
+                            int toplamPideFiyat = (ürün.Value * 55);
+                            toplamFiyat += toplamPideFiyat;
+                        }
+                        if(ürün.Key == "Salata") {
+                            int toplamSalataFiyat = (ürün.Value * 30);
+                            toplamFiyat += toplamSalataFiyat;
+                        }
+                        if(ürün.Key == "Meşrubat") {
+                            int toplamMeşrubatFiyat = (ürün.Value * 15);
+                            toplamFiyat += toplamMeşrubatFiyat;
+                        }
+                        toplam += toplamFiyat;
+                        Console.WriteLine($"{ürün.Key}: {ürün.Value} adet");
+                    }
                 }
+                Console.WriteLine("Toplam Ücret: " + toplam);
                 Console.ReadKey();
                 break;
             }else {
@@ -1012,6 +1069,41 @@ Yeni Sipariş İçin (y) adisyon için (q): ");
                 continue;
             }
 
+        }
+    }
+
+
+    static void NesneYönelimÖrnekleri() {
+        int sayi = 3250;
+        umyo.Yaz(sayi);
+    }
+
+    // Faktoriyel hesaplayan Method
+    static long FaktoriyelHesapla(int sayi)
+    {
+        if (sayi == 0)
+            return 1;
+        
+        long sonuc = 1;
+        for (int i = 1; i <= sayi; i++)
+        {
+            sonuc *= i;
+        }
+        return sonuc;
+    }
+
+
+}
+
+
+public class umyo
+{
+    public static void Yaz(int sayi)
+    {
+        string sayiStr = sayi.ToString();
+        foreach (char c in sayiStr)
+        {
+            Console.WriteLine(c);
         }
     }
 
