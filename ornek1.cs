@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-class Program
+public class Program
 {
     static void Main()
     {
@@ -46,16 +46,17 @@ Nesne Tab Prog Lab Çal Soru_3
 =============================
 Object Oriented Programing
 =============================
-11) Örnek 1
+11) AltAltayaz
 12) Faktoriyel Hesaplama
 13) Harf Bulma
 14) Kelime Bulma
-15)
-16)
-17)
-18)
-19)
-20)
+15) Tek çift Sayi
+16) Ortalama Vize Final
+17) Asal Sayı
+18) Ters Yazi
+19) Üs alma
+20) Toplam
+21) Pozitif
 =============================
 99)Exit
 
@@ -116,7 +117,104 @@ Hangi Numarayı çalıştırmak istersin: ");
                     clear();
                     continue;
                 case 11:
-                    NesneYönelimÖrnekleri();
+                    Console.Write("Alt Alta yazdırmak istediğin sayıyı gir: ");
+                    int s = Convert.ToInt32(Console.ReadLine());
+                    umyo.Yaz(s);
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 12:
+                    Console.Write("Faktoriyel Hesaplamaya Hoşgeldiniz\n");
+                    Console.Write("Hangi sayının faktoriyelini almak istersiniz: ");
+                    int sayi = Convert.ToInt32(Console.ReadLine());
+                    long sonuc = FaktoriyelHesapla(sayi);
+                    Console.WriteLine(sayi + " Sayısının Faktoriyeli ==> " + sonuc);
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 13:
+                    Console.Write("Harf Bulucuya Hoşgeldiniz\n");
+                    Console.Write("Metni Giriniz: ");
+                    string m = Console.ReadLine();
+                    Console.Write("Hangi Harfi Bulmak İstersiniz: ");
+                    string c = Console.ReadLine();
+                    umyo.HarfBulucu(m,c);
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 14:
+                    Console.Write("Harf Bulucuya Hoşgeldiniz\n");
+                    Console.Write("Metni Giriniz: ");
+                    string metin01 = Console.ReadLine();
+                    Console.Write("Hangi Kelimeyi Bulmak İstersiniz: ");
+                    string char01 = Console.ReadLine();
+                    umyo.KelimeSayisiBulma(metin01,char01);
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 15:
+                    Console.Write("Tek Çift Sayı Bulucu\n");
+                    Console.Write("Sayı Gir: ");
+                    int sayi001 = Convert.ToInt32(Console.ReadLine()); 
+                    umyo.TekCiftSayi(sayi001);
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 16:
+                    Console.Write("Vize ve Final Girilen Öğrencinin Ortalamsını bulan kod\n");
+                    Console.Write("Vize Giriniz: ");
+                    double vize001 = Convert.ToDouble(Console.ReadLine()); 
+                    Console.Write("Final Giriniz: ");
+                    double final001 = Convert.ToDouble(Console.ReadLine()); 
+                    double genelNot = umyo.Ortalama(vize001,final001);
+                    Console.WriteLine("Ortalama: " + genelNot);
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 17:
+                    Console.Write("Asal Sayı Bulucuya Hoşgeldiniz\n"); 
+                    Console.Write("Sayı Gir: ");
+                    int asalsa   = Convert.ToInt32(Console.ReadLine()); 
+                    umyo.AsalBulucu(asalsa);
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 18:
+                    Console.Write("Ters Yazı Yazdıran Kod\n"); 
+                    Console.Write("Kelime Gir: ");
+                    string terskelime  = Console.ReadLine(); 
+                    string karakterler = umyo.TersYazi(terskelime);
+                    Console.Write(karakterler);
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 19:
+                    Console.Write("Hesap Fonksiyonu\n"); 
+                    Console.Write("n değerini giriniz: ");
+                    int n = Convert.ToInt32(Console.ReadLine());
+
+                    double sonuc002 = umyo.Hesapla2N(n);
+                    Console.WriteLine($"2^{n} = {sonuc002}");
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 20:
+                    Console.Write("Hangi Sayıya Kadar Toplama işlemi Yapmak istersiniz: ");
+                    int n001 = Convert.ToInt32(Console.ReadLine());
+                    int s001 = umyo.Toplam(n001);
+                    Console.Write(n001 + " Sayısına kadar olan sayma sayılarının toplamı: " + s001);
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 21:
+                    Console.Write("Pozitif Sayıları Bulan Fonksiyon: ");
+                    int n002 = Convert.ToInt32(Console.ReadLine());
+                    bool s2 = umyo.Pozitif(n002);
+                    if(s2) {
+                        Console.Write("Sayı Pozitif yada sıfır");
+                    }else {
+                        Console.Write("Sayı Negatif");
+                    }
                     Console.ReadKey();
                     clear();
                     continue;
@@ -514,8 +612,6 @@ Hangi Numarayı çalıştırmak istersin: ");
         {
             Console.WriteLine("Geçersiz bir sayı girişi yaptınız.");
         }
-
-
     }
 
     static bool IsPrime(int num)
@@ -1031,6 +1127,7 @@ Yeni Sipariş İçin (y) adisyon için (q): ");
             }else if(adisyon[0] == 'q') {
                 int toplam = 0;
                 Console.WriteLine("Adisyon Tamamlandı..");
+
                 foreach (var ürün in ürünler)
                 {
                     // varsayılan toplam fiyat
@@ -1072,12 +1169,6 @@ Yeni Sipariş İçin (y) adisyon için (q): ");
         }
     }
 
-
-    static void NesneYönelimÖrnekleri() {
-        int sayi = 3250;
-        umyo.Yaz(sayi);
-    }
-
     // Faktoriyel hesaplayan Method
     static long FaktoriyelHesapla(int sayi)
     {
@@ -1091,20 +1182,127 @@ Yeni Sipariş İçin (y) adisyon için (q): ");
         }
         return sonuc;
     }
-
-
 }
 
 
+
+//
+// Class Name (umyo)
+//
 public class umyo
 {
-    public static void Yaz(int sayi)
-    {
+    public static void Yaz(int sayi) {
         string sayiStr = sayi.ToString();
-        foreach (char c in sayiStr)
-        {
+
+        foreach (char c in sayiStr) {
             Console.WriteLine(c);
         }
     }
+
+
+    public static void HarfBulucu(string metin, string karakter) {
+        int total = 0;
+        foreach (char c in metin) {
+            if(c == karakter[0]) {
+                total += 1;
+            }
+        }
+        Console.WriteLine(total + " Harf Bulundu");
+    }
+
+    public static void KelimeSayisiBulma(string metin, string kelime) {
+        int total = 0;
+        string[] kelimeler = metin.Split(' ');
+        
+        // Her kelimeyi teker teker döndür
+        foreach (var k in kelimeler)
+        {
+            if(k == kelime) {
+                total += 1;
+            }
+        }
+        Console.WriteLine(total + " Kelime Bulundu");
+    }
+
+
+    public static void TekCiftSayi(int s) {
+        if (s % 2 == 0)
+        {
+            Console.WriteLine("Sayı çifttir.");
+        }
+        else
+        {
+            Console.WriteLine("Sayı tektir.");
+        }       
+    }
+
+    public static double Ortalama(double vize, double final) {
+        double genelNot = (vize * 0.4) + (final * 0.6);
+        return genelNot;
+    }
+
+    public static void AsalBulucu(int asalSayiBul) {
+        bool d = IsPrime001(asalSayiBul);
+        if (d) {
+            Console.Write("Sayı Asal");
+        }else { 
+            Console.Write("Sayı Asal Değil");
+        }
+    }
+
+    static bool IsPrime001(int num)
+    {
+        if (num <= 1)
+        {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.Sqrt(num); i++)
+        {
+            if (num % i == 0)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+    public static string TersYazi(string kelime) {
+        char[] karakterler = kelime.ToCharArray();
+        Array.Reverse(karakterler);
+        return new string(karakterler);
+    }
+
+
+    public static double Hesapla2N(int n)
+    {
+        return Math.Pow(2, n);
+    }
+
+    public static int Toplam(int n) {
+        int toplamDeger = 0;
+        for(int i =1; i<=n; i++) {
+            toplamDeger += i;
+        }
+        return toplamDeger;
+    }
+
+    public static bool Pozitif(int n) {
+        if(n < 0) {
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+
+
+
+
+
+
+
 
 }
