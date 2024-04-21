@@ -57,6 +57,7 @@ Object Oriented Programing
 19) Üs alma
 20) Toplam
 21) Pozitif
+22) harfcevir
 =============================
 99)Exit
 
@@ -214,6 +215,22 @@ Hangi Numarayı çalıştırmak istersin: ");
                         Console.Write("Sayı Pozitif yada sıfır");
                     }else {
                         Console.Write("Sayı Negatif");
+                    }
+                    Console.ReadKey();
+                    clear();
+                    continue;
+                case 22:
+                    Console.WriteLine("Lütfen bir rakam notu giriniz (0-100):");
+                    int not = Convert.ToInt32(Console.ReadLine());
+
+                    if (not < 0 || not > 100)
+                    {
+                        Console.WriteLine("Geçersiz not girdiniz.");
+                    }
+                    else
+                    {
+                        string harfNotu = HarfNotuHesapla(not);
+                        Console.WriteLine($"Girilen notun harf karşılığı: {harfNotu}");
                     }
                     Console.ReadKey();
                     clear();
@@ -1182,6 +1199,43 @@ Yeni Sipariş İçin (y) adisyon için (q): ");
         }
         return sonuc;
     }
+
+    static string HarfNotuHesapla(int not)
+    {
+        if (not >= 90)
+        {
+            return "AA";
+        }
+        else if (not >= 85)
+        {
+            return "BA";
+        }
+        else if (not >= 80)
+        {
+            return "BB";
+        }
+        else if (not >= 75)
+        {
+            return "CB";
+        }
+        else if (not >= 70)
+        {
+            return "CC";
+        }
+        else if (not >= 65)
+        {
+            return "DC";
+        }
+        else if (not >= 60)
+        {
+            return "DD";
+        }
+        else
+        {
+            return "FF";
+        }
+    }
+
 }
 
 
@@ -1296,13 +1350,5 @@ public class umyo
             return true;
         }
     }
-
-
-
-
-
-
-
-
 
 }
